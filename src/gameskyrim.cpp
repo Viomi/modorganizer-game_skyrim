@@ -50,7 +50,7 @@ bool GameSkyrim::init(IOrganizer *moInfo)
 
 QString GameSkyrim::gameName() const
 {
-  return "Skyrim";
+  return "Skyrim Special Edition";
 }
 
 QList<ExecutableInfo> GameSkyrim::executables() const
@@ -122,7 +122,7 @@ QString GameSkyrim::savegameExtension() const
 
 QString GameSkyrim::steamAPPId() const
 {
-  return "72850";
+  return "489830";
 }
 
 QStringList GameSkyrim::primaryPlugins() const
@@ -132,12 +132,12 @@ QStringList GameSkyrim::primaryPlugins() const
 
 QString GameSkyrim::binaryName() const
 {
-  return "TESV.exe";
+  return "SkyrimSE.exe";
 }
 
 QString GameSkyrim::gameShortName() const
 {
-  return "Skyrim";
+  return "SkyrimSE";
 }
 
 QStringList GameSkyrim::iniFiles() const
@@ -191,7 +191,7 @@ IPluginGame::LoadOrderMechanism GameSkyrim::loadOrderMechanism() const
       return LoadOrderMechanism::PluginsTxt;
     }
   } catch (const std::exception &e) {
-    qCritical() << "TESV.exe is invalid: " << e.what();
+    qCritical() << "SkyrimSE.exe is invalid: " << e.what();
   }
   return LoadOrderMechanism::FileTime;
 }
