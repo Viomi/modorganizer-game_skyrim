@@ -1,4 +1,4 @@
-#include "skyrimsescriptextender.h"
+#include "skyrimSEscriptextender.h"
 
 #include <QString>
 #include <QStringList>

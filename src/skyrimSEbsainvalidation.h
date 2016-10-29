@@ -3,7 +3,7 @@
 
 
 #include "gamebryobsainvalidation.h"
-#include "skyrimsedataarchives.h"
+#include "skyrimSEdataarchives.h"
 
 #include <memory>
 
