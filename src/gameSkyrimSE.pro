@@ -12,19 +12,19 @@ CONFIG += plugins
 CONFIG += dll
 DEFINES += GAMESKYRIMSE_LIBRARY
 
-SOURCES += gameskyrimse.cpp \
-    skyrimsebsainvalidation.cpp \
-    skyrimsescriptextender.cpp \
-    skyrimsedataarchives.cpp \
-    skyrimsesavegame.cpp \
-    skyrimsesavegameinfo.cpp
+SOURCES += gameskyrimSE.cpp \
+    skyrimSEbsainvalidation.cpp \
+    skyrimSEscriptextender.cpp \
+    skyrimSEdataarchives.cpp \
+    skyrimSEsavegame.cpp \
+    skyrimSEsavegameinfo.cpp
 
-HEADERS += gameskyrimse.h \
-    skyrimsebsainvalidation.h \
-    skyrimsescriptextender.h \
-    skyrimsedataarchives.h \
-    skyrimsesavegame.h \
-    skyrimsesavegameinfo.h
+HEADERS += gameskyrimSE.h \
+    skyrimSEbsainvalidation.h \
+    skyrimSEscriptextender.h \
+    skyrimSEdataarchives.h \
+    skyrimSEsavegame.h \
+    skyrimSEsavegameinfo.h
 
 CONFIG(debug, debug|release) {
   LIBS += -L"$${OUT_PWD}/../gameGamebryo/debug"
@@ -43,7 +43,7 @@ INCLUDEPATH += "$${BOOSTPATH}" "$${PWD}/../gamefeatures" "$${PWD}/../gamegamebry
 LIBS += -ladvapi32 -lole32 -lgameGamebryo
 
 OTHER_FILES += \
-    gameskyrimse.json\
+    gameskyrimSE.json\
     SConscript \
     CMakeLists.txt
 
