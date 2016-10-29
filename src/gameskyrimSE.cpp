@@ -1,9 +1,9 @@
-#include "gameskyrimse.h"
+#include "gameskyrimSE.h"
 
-#include "skyrimsebsainvalidation.h"
-#include "skyrimsescriptextender.h"
-#include "skyrimsedataarchives.h"
-#include "skyrimsesavegameinfo.h"
+#include "skyrimSEbsainvalidation.h"
+#include "skyrimSEscriptextender.h"
+#include "skyrimSEdataarchives.h"
+#include "skyrimSEsavegameinfo.h"
 
 #include "executableinfo.h"
 #include "pluginsetting.h"
@@ -50,7 +50,7 @@ bool GameSkyrimSE::init(IOrganizer *moInfo)
 
 QString GameSkyrimSE::gameName() const
 {
-  return "Skyrim Speical Edition";
+  return "Skyrim Special Edition";
 }
 
 QList<ExecutableInfo> GameSkyrimSE::executables() const
@@ -68,17 +68,17 @@ QList<ExecutableInfo> GameSkyrimSE::executables() const
 
 QString GameSkyrimSE::name() const
 {
-  return "Skyrim Speical Edition Support Plugin";
+  return "Skyrim SE Support Plugin";
 }
 
 QString GameSkyrimSE::author() const
 {
-  return "Tannin";
+  return "Tannin, Viomi, MinSin";
 }
 
 QString GameSkyrimSE::description() const
 {
-  return tr("Adds support for the game Skyrim Speical Edition");
+  return tr("Adds support for the game Skyrim SE");
 }
 
 MOBase::VersionInfo GameSkyrimSE::version() const
@@ -99,8 +99,8 @@ QList<PluginSetting> GameSkyrimSE::settings() const
 void GameSkyrimSE::initializeProfile(const QDir &path, ProfileSettings settings) const
 {
   if (settings.testFlag(IPluginGame::MODS)) {
-    copyToProfile(localAppFolder() + "/Skyrim Speical Edition", path, "plugins.txt");
-    copyToProfile(localAppFolder() + "/Skyrim Speical Edition", path, "loadorder.txt");
+    copyToProfile(localAppFolder() + "/Skyrim Special Edition", path, "plugins.txt");
+    copyToProfile(localAppFolder() + "/Skyrim Special Edition", path, "loadorder.txt");
   }
 
   if (settings.testFlag(IPluginGame::CONFIGURATION)) {
@@ -147,8 +147,7 @@ QStringList GameSkyrimSE::iniFiles() const
 
 QStringList GameSkyrimSE::DLCPlugins() const
 {
-  return { "Dawnguard.esm", "Dragonborn.esm", "HearthFires.esm",
-           "HighResTexturePack01.esp", "HighResTexturePack02.esp", "HighResTexturePack03.esp" };
+  return { "Dawnguard.esm", "Dragonborn.esm", "HearthFires.esm" };
 }
 
 namespace {
@@ -186,12 +185,12 @@ IPluginGame::LoadOrderMechanism GameSkyrimSE::loadOrderMechanism() const
   try {
     std::wstring fileName = gameDirectory().absoluteFilePath(binaryName()).toStdWString().c_str();
     VS_FIXEDFILEINFO versionInfo = ::GetFileVersion(fileName);
-    if ((versionInfo.dwFileVersionMS >= 0x10000) || // version >= 1.0.x?
-        ((versionInfo.dwFileVersionMS == 0x10004) && (versionInfo.dwFileVersionLS >= 0x2F0000))) { // version >= ?.1.47
+    if ((versionInfo.dwFileVersionMS > 0x10004) || // version >= 1.0.x?
+        ((versionInfo.dwFileVersionMS == 0x10004) && (versionInfo.dwFileVersionLS >= 0x1A0000))) { // version >= ?.4.26
       return LoadOrderMechanism::PluginsTxt;
     }
   } catch (const std::exception &e) {
-    qCritical() << "SkrrimSE.exe is invalid: " << e.what();
+    qCritical() << "SkyrimSE.exe is invalid: " << e.what();
   }
   return LoadOrderMechanism::FileTime;
 }
@@ -199,10 +198,10 @@ IPluginGame::LoadOrderMechanism GameSkyrimSE::loadOrderMechanism() const
 
 int GameSkyrimSE::nexusModOrganizerID() const
 {
-  return 1334;
+  return 1335;
 }
 
 int GameSkyrimSE::nexusGameID() const
 {
-  return 110;
+  return 1704;
 }

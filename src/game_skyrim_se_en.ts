@@ -4,8 +4,8 @@
 <context>
     <name>GameSkyrimSE</name>
     <message>
-        <location filename="gameskyrimse.cpp" line="81"/>
-        <source>Adds support for the game Skyrim Speical Edition</source>
+        <location filename="gameskyrimSE.cpp" line="81"/>
+        <source>Adds support for the game Skyrim SE</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

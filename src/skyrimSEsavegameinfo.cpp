@@ -1,6 +1,6 @@
-#include "skyrimsesavegameinfo.h"
+#include "skyrimSEsavegameinfo.h"
 
-#include "skyrimsesavegame.h"
+#include "skyrimSEsavegame.h"
 #include "gamegamebryo.h"
 
 SkyrimSESaveGameInfo::SkyrimSESaveGameInfo(GameGamebryo const *game) :

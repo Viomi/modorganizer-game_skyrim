@@ -1,4 +1,4 @@
-#include "skyrimsebsainvalidation.h"
+#include "skyrimSEbsainvalidation.h"
 
 SkyrimSEBSAInvalidation::SkyrimSEBSAInvalidation(DataArchives *dataArchives, MOBase::IPluginGame const *game)
   : GamebryoBSAInvalidation(dataArchives, "skyrim.ini", game)

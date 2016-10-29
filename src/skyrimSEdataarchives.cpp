@@ -1,4 +1,4 @@
-#include "skyrimsedataarchives.h"
+#include "skyrimSEdataarchives.h"
 #include <utility.h>
 #include <QDir>
 
