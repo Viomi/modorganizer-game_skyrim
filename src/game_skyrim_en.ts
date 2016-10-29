@@ -2,10 +2,10 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
-    <name>GameSkyrim</name>
+    <name>GameSkyrimSE</name>
     <message>
-        <location filename="gameskyrim.cpp" line="81"/>
-        <source>Adds support for the game Skyrim</source>
+        <location filename="gameskyrimSE.cpp" line="81"/>
+        <source>Adds support for the game Skyrim SE</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

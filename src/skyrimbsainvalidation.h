@@ -1,17 +1,17 @@
-#ifndef SKYRIMBSAINVALIDATION_H
-#define SKYRIMBSAINVALIDATION_H
+#ifndef SKYRIMSEBSAINVALIDATION_H
+#define SKYRIMSEBSAINVALIDATION_H
 
 
 #include "gamebryobsainvalidation.h"
-#include "skyrimdataarchives.h"
+#include "skyrimSEdataarchives.h"
 
 #include <memory>
 
-class SkyrimBSAInvalidation : public GamebryoBSAInvalidation
+class SkyrimSEBSAInvalidation : public GamebryoBSAInvalidation
 {
 public:
 
-  SkyrimBSAInvalidation(DataArchives *dataArchives, MOBase::IPluginGame const *game);
+  SkyrimSEBSAInvalidation(DataArchives *dataArchives, MOBase::IPluginGame const *game);
 
 private:
 
@@ -20,4 +20,4 @@ private:
 
 };
 
-#endif // SKYRIMBSAINVALIDATION_H
+#endif // SKYRIMSEBSAINVALIDATION_H

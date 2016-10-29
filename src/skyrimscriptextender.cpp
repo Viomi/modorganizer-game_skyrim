@@ -1,19 +1,19 @@
-#include "skyrimscriptextender.h"
+#include "skyrimSEscriptextender.h"
 
 #include <QString>
 #include <QStringList>
 
-SkyrimScriptExtender::SkyrimScriptExtender(GameGamebryo const *game) :
+SkyrimSEScriptExtender::SkyrimSEScriptExtender(GameGamebryo const *game) :
   GamebryoScriptExtender(game)
 {
 }
 
-QString SkyrimScriptExtender::name() const
+QString SkyrimSEScriptExtender::name() const
 {
   return "skse";
 }
 
-QStringList SkyrimScriptExtender::saveGameAttachmentExtensions() const
+QStringList SkyrimSEScriptExtender::saveGameAttachmentExtensions() const
 {
   return { name() };
 }

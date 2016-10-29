@@ -1,19 +1,19 @@
-#include "skyrimsavegameinfo.h"
+#include "skyrimSEsavegameinfo.h"
 
-#include "skyrimsavegame.h"
+#include "skyrimSEsavegame.h"
 #include "gamegamebryo.h"
 
-SkyrimSaveGameInfo::SkyrimSaveGameInfo(GameGamebryo const *game) :
+SkyrimSESaveGameInfo::SkyrimSESaveGameInfo(GameGamebryo const *game) :
   GamebryoSaveGameInfo(game)
 {
 }
 
-SkyrimSaveGameInfo::~SkyrimSaveGameInfo()
+SkyrimSESaveGameInfo::~SkyrimSESaveGameInfo()
 {
 }
 
 
-MOBase::ISaveGame const *SkyrimSaveGameInfo::getSaveGameInfo(QString const &file) const
+MOBase::ISaveGame const *SkyrimSESaveGameInfo::getSaveGameInfo(QString const &file) const
 {
-  return new SkyrimSaveGame(file, m_Game);
+  return new SkyrimSESaveGame(file, m_Game);
 }

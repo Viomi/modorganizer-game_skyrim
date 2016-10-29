@@ -2,13 +2,13 @@ Import('qt_env')
 
 env = qt_env.Clone()
 
-env.AppendUnique(CPPDEFINES = [ 'GAMESKYRIM_LIBRARY' ])
+env.AppendUnique(CPPDEFINES = [ 'GAMESKYRIMSE_LIBRARY' ])
 
 env.RequiresGamebryo()
 
 env.AppendUnique(LIBS = [ 'Version' ])
 
-lib = env.SharedLibrary('gameSkyrim', env.Glob('*.cpp'))
+lib = env.SharedLibrary('gameSkyrimSE', env.Glob('*.cpp'))
 env.InstallModule(lib)
 
 res = env['QT_USED_MODULES']

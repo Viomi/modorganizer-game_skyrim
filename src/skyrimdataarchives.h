@@ -1,5 +1,5 @@
-#ifndef SKYRIMDATAARCHIVES_H
-#define SKYRIMDATAARCHIVES_H
+#ifndef SKYRIMSEDATAARCHIVES_H
+#define SKYRIMSEDATAARCHIVES_H
 
 
 #include <gamebryodataarchives.h>
@@ -7,7 +7,7 @@
 #include <QString>
 #include <QStringList>
 
-class SkyrimDataArchives : public GamebryoDataArchives
+class SkyrimSEDataArchives : public GamebryoDataArchives
 {
 
 public:
@@ -21,4 +21,4 @@ private:
 
 };
 
-#endif // SKYRIMDATAARCHIVES_H
+#endif // SKYRIMSEDATAARCHIVES_H

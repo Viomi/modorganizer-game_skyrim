@@ -1,16 +1,13 @@
-#include "skyrimdataarchives.h"
+#include "skyrimSEdataarchives.h"
 #include <utility.h>
 #include <QDir>
 
 
-QStringList SkyrimDataArchives::vanillaArchives() const
+QStringList SkyrimSEDataArchives::vanillaArchives() const
 {
   return  { "Skyrim - Misc.bsa"
           , "Skyrim - Shaders.bsa"
           , "Skyrim - Textures.bsa"
-          , "HighResTexturePack01.bsa"
-          , "HighResTexturePack02.bsa"
-          , "HighResTexturePack03.bsa"
           , "Skyrim - Interface.bsa"
           , "Skyrim - Animations.bsa"
           , "Skyrim - Meshes.bsa"
@@ -20,7 +17,7 @@ QStringList SkyrimDataArchives::vanillaArchives() const
 }
 
 
-QStringList SkyrimDataArchives::archives(const MOBase::IProfile *profile) const
+QStringList SkyrimSEDataArchives::archives(const MOBase::IProfile *profile) const
 {
   QStringList result;
 
@@ -31,7 +28,7 @@ QStringList SkyrimDataArchives::archives(const MOBase::IProfile *profile) const
   return result;
 }
 
-void SkyrimDataArchives::writeArchiveList(MOBase::IProfile *profile, const QStringList &before)
+void SkyrimSEDataArchives::writeArchiveList(MOBase::IProfile *profile, const QStringList &before)
 {
   QString list = before.join(", ");
 

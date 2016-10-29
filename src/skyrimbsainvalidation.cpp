@@ -1,16 +1,16 @@
-#include "skyrimbsainvalidation.h"
+#include "skyrimSEbsainvalidation.h"
 
-SkyrimBSAInvalidation::SkyrimBSAInvalidation(DataArchives *dataArchives, MOBase::IPluginGame const *game)
+SkyrimSEBSAInvalidation::SkyrimSEBSAInvalidation(DataArchives *dataArchives, MOBase::IPluginGame const *game)
   : GamebryoBSAInvalidation(dataArchives, "skyrim.ini", game)
 {
 }
 
-QString SkyrimBSAInvalidation::invalidationBSAName() const
+QString SkyrimSEBSAInvalidation::invalidationBSAName() const
 {
   return "Skyrim - Invalidation.bsa";
 }
 
-unsigned long SkyrimBSAInvalidation::bsaVersion() const
+unsigned long SkyrimSEBSAInvalidation::bsaVersion() const
 {
   return 0x68;
 }

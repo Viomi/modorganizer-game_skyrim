@@ -1,9 +1,9 @@
-#include "gameskyrim.h"
+#include "gameskyrimSE.h"
 
-#include "skyrimbsainvalidation.h"
-#include "skyrimscriptextender.h"
-#include "skyrimdataarchives.h"
-#include "skyrimsavegameinfo.h"
+#include "skyrimSEbsainvalidation.h"
+#include "skyrimSEscriptextender.h"
+#include "skyrimSEdataarchives.h"
+#include "skyrimSEsavegameinfo.h"
 
 #include "executableinfo.h"
 #include "pluginsetting.h"
@@ -29,31 +29,31 @@
 
 using namespace MOBase;
 
-GameSkyrim::GameSkyrim()
+GameSkyrimSE::GameSkyrimSE()
 {
 }
 
-bool GameSkyrim::init(IOrganizer *moInfo)
+bool GameSkyrimSE::init(IOrganizer *moInfo)
 {
   if (!GameGamebryo::init(moInfo)) {
     return false;
   }
-  registerFeature<ScriptExtender>(new SkyrimScriptExtender(this));
-  registerFeature<DataArchives>(new SkyrimDataArchives());
-  registerFeature<BSAInvalidation>(new SkyrimBSAInvalidation(feature<DataArchives>(), this));
-  registerFeature<SaveGameInfo>(new SkyrimSaveGameInfo(this));
+  registerFeature<ScriptExtender>(new SkyrimSEScriptExtender(this));
+  registerFeature<DataArchives>(new SkyrimSEDataArchives());
+  registerFeature<BSAInvalidation>(new SkyrimSEBSAInvalidation(feature<DataArchives>(), this));
+  registerFeature<SaveGameInfo>(new SkyrimSESaveGameInfo(this));
   registerFeature<LocalSavegames>(new GamebryoLocalSavegames(myGamesPath(), "skyrim.ini"));
   registerFeature<GamePlugins>(new GamebryoGamePlugins(moInfo));
   registerFeature<UnmanagedMods>(new GamebryoUnmangedMods(this));
   return true;
 }
 
-QString GameSkyrim::gameName() const
+QString GameSkyrimSE::gameName() const
 {
-  return "Skyrim";
+  return "Skyrim Special Edition";
 }
 
-QList<ExecutableInfo> GameSkyrim::executables() const
+QList<ExecutableInfo> GameSkyrimSE::executables() const
 {
   return QList<ExecutableInfo>()
       << ExecutableInfo("SKSE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
@@ -66,41 +66,41 @@ QList<ExecutableInfo> GameSkyrim::executables() const
   ;
 }
 
-QString GameSkyrim::name() const
+QString GameSkyrimSE::name() const
 {
-  return "Skyrim Support Plugin";
+  return "Skyrim SE Support Plugin";
 }
 
-QString GameSkyrim::author() const
+QString GameSkyrimSE::author() const
 {
-  return "Tannin";
+  return "Tannin, MinSin";
 }
 
-QString GameSkyrim::description() const
+QString GameSkyrimSE::description() const
 {
-  return tr("Adds support for the game Skyrim");
+  return tr("Adds support for the game Skyrim SE");
 }
 
-MOBase::VersionInfo GameSkyrim::version() const
+MOBase::VersionInfo GameSkyrimSE::version() const
 {
   return VersionInfo(1, 0, 0, VersionInfo::RELEASE_FINAL);
 }
 
-bool GameSkyrim::isActive() const
+bool GameSkyrimSE::isActive() const
 {
   return qApp->property("managed_game").value<IPluginGame*>() == this;
 }
 
-QList<PluginSetting> GameSkyrim::settings() const
+QList<PluginSetting> GameSkyrimSE::settings() const
 {
   return QList<PluginSetting>();
 }
 
-void GameSkyrim::initializeProfile(const QDir &path, ProfileSettings settings) const
+void GameSkyrimSE::initializeProfile(const QDir &path, ProfileSettings settings) const
 {
   if (settings.testFlag(IPluginGame::MODS)) {
-    copyToProfile(localAppFolder() + "/Skyrim", path, "plugins.txt");
-    copyToProfile(localAppFolder() + "/Skyrim", path, "loadorder.txt");
+    copyToProfile(localAppFolder() + "/Skyrim Special Edition", path, "plugins.txt");
+    copyToProfile(localAppFolder() + "/Skyrim Special Edition", path, "loadorder.txt");
   }
 
   if (settings.testFlag(IPluginGame::CONFIGURATION)) {
@@ -115,40 +115,39 @@ void GameSkyrim::initializeProfile(const QDir &path, ProfileSettings settings) c
   }
 }
 
-QString GameSkyrim::savegameExtension() const
+QString GameSkyrimSE::savegameExtension() const
 {
   return "ess";
 }
 
-QString GameSkyrim::steamAPPId() const
+QString GameSkyrimSE::steamAPPId() const
 {
-  return "72850";
+  return "489830";
 }
 
-QStringList GameSkyrim::primaryPlugins() const
+QStringList GameSkyrimSE::primaryPlugins() const
 {
   return { "skyrim.esm", "update.esm" };
 }
 
-QString GameSkyrim::binaryName() const
+QString GameSkyrimSE::binaryName() const
 {
-  return "TESV.exe";
+  return "SkyrimSE.exe";
 }
 
-QString GameSkyrim::gameShortName() const
+QString GameSkyrimSE::gameShortName() const
 {
-  return "Skyrim";
+  return "Skyrim SE";
 }
 
-QStringList GameSkyrim::iniFiles() const
+QStringList GameSkyrimSE::iniFiles() const
 {
   return { "skyrim.ini", "skyrimprefs.ini" };
 }
 
-QStringList GameSkyrim::DLCPlugins() const
+QStringList GameSkyrimSE::DLCPlugins() const
 {
-  return { "Dawnguard.esm", "Dragonborn.esm", "HearthFires.esm",
-           "HighResTexturePack01.esp", "HighResTexturePack02.esp", "HighResTexturePack03.esp" };
+  return { "Dawnguard.esm", "Dragonborn.esm", "HearthFires.esm" };
 }
 
 namespace {
@@ -181,28 +180,28 @@ VS_FIXEDFILEINFO GetFileVersion(const std::wstring &fileName)
 
 }
 
-IPluginGame::LoadOrderMechanism GameSkyrim::loadOrderMechanism() const
+IPluginGame::LoadOrderMechanism GameSkyrimSE::loadOrderMechanism() const
 {
   try {
     std::wstring fileName = gameDirectory().absoluteFilePath(binaryName()).toStdWString().c_str();
     VS_FIXEDFILEINFO versionInfo = ::GetFileVersion(fileName);
-    if ((versionInfo.dwFileVersionMS > 0x10004) || // version >= 1.5.x?
+    if ((versionInfo.dwFileVersionMS > 0x10004) || // version >= 1.0.x?
         ((versionInfo.dwFileVersionMS == 0x10004) && (versionInfo.dwFileVersionLS >= 0x1A0000))) { // version >= ?.4.26
       return LoadOrderMechanism::PluginsTxt;
     }
   } catch (const std::exception &e) {
-    qCritical() << "TESV.exe is invalid: " << e.what();
+    qCritical() << "SkyrimSE.exe is invalid: " << e.what();
   }
   return LoadOrderMechanism::FileTime;
 }
 
 
-int GameSkyrim::nexusModOrganizerID() const
+int GameSkyrimSE::nexusModOrganizerID() const
 {
-  return 1334;
+  return 1335;
 }
 
-int GameSkyrim::nexusGameID() const
+int GameSkyrimSE::nexusGameID() const
 {
-  return 110;
+  return 1704;
 }

@@ -1,17 +1,17 @@
-#ifndef SKYRIMSAVEGAMEINFO_H
-#define SKYRIMSAVEGAMEINFO_H
+#ifndef SKYRIMSESAVEGAMEINFO_H
+#define SKYRIMSESAVEGAMEINFO_H
 
 #include "gamebryosavegameinfo.h"
 
 class GameGamebryo;
 
-class SkyrimSaveGameInfo : public GamebryoSaveGameInfo
+class SkyrimSESaveGameInfo : public GamebryoSaveGameInfo
 {
 public:
-  SkyrimSaveGameInfo(GameGamebryo const *game);
-  ~SkyrimSaveGameInfo();
+  SkyrimSESaveGameInfo(GameGamebryo const *game);
+  ~SkyrimSESaveGameInfo();
 
   virtual MOBase::ISaveGame const *getSaveGameInfo(QString const &file) const override;
 };
 
-#endif // SKYRIMSAVEGAMEINFO_H
+#endif // SKYRIMSESAVEGAMEINFO_H
