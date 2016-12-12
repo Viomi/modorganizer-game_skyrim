@@ -140,6 +140,11 @@ QString GameSkyrimSE::gameShortName() const
   return "SkyrimSE";
 }
 
+QString GameSkyrimSE::gameNexusName() const
+{
+  return "SkyrimSpecialEdition";
+}
+
 QStringList GameSkyrimSE::iniFiles() const
 {
   return { "skyrim.ini", "skyrimprefs.ini" };
